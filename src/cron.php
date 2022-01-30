@@ -18,9 +18,13 @@ if ($stmt->execute()) {
         curl_close($ch);
 
         $statuscode = $headers['http_code'];
+        $data = date("Y-m-d H:i:s");
+        $time = strtotime("now");
 
-        $query = $pdo->prepare("UPDATE `url` SET `statuscode` = :statuscode WHERE id = :id");
+        $query = $pdo->prepare("UPDATE `url` SET `statuscode` = :statuscode, `data` = :updata, `timestamp` = :uptimestamp WHERE id = :id");
         $query->bindParam(":statuscode", $statuscode);
+        $query->bindParam(":updata", $data);
+        $query->bindParam(":uptimestamp", $time);
         $query->bindParam(":id", $id);
         $query->execute();
     }
