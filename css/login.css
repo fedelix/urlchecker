@@ -1,0 +1,10 @@
+body {
+    background-color:#333333;
+}
+.error {
+    color: red;
+    padding-bottom: 20px;
+}
+.hide {
+    display: none;
+}
